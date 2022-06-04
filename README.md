@@ -47,7 +47,7 @@ Currently, only 56% of wells are fully functioning, leaving 44% that are not fun
 
 Of the 4 available CSV data files, we chose the 2 training set files with which to develop our model. These provided a complete set of available well features data in the file name ending in "Training_set_values.csv" as well as the functional status of the corresponding wells in the file name ending in "Training_set_labels.csv". We merged the data from these two files into one data frame.  
 
-The Training_set_values.csv file contained 41 columns of information about the wells which can be broadly categorized as "Technical", "Geographic"  and "Political/Organizational" information. The geographic data by itself was not sufficient to draw conclusions. It may have been more relevant if it could be married with information about land topography, seasonal weather patterns, proximity to rivers or lakes, etc. The political data had a lot of null values, non-descriptive categories such as "Other" or "Unknown". Perhaps, additional data on regional political dynamics, funding concentrations, etc. may have provided a mechanism to correlate with the functional status of wells. Many columns had overlapping or exactly duplicate data.
+The Training_set_values.csv file contained 41 columns of information about the wells which can be broadly categorized as "Technical", "Geographic"  and "Political/Organizational" information. The geographic data by itself was not sufficient to draw conclusions. It may have been more relevant if it could be married with information about land topography, seasonal weather patterns, proximity to rivers or lakes, etc. The political data had a lot of null values, non-descriptive categories such as "Other" or "Unknown". Perhaps, additional data on regional political dynamics, funding concentrations, etc. may have provided a mechanism to correlate with the functional status of wells. Many columns had overlapping or exactly duplicate data.  
 ![Getting water from a stream or river](Images/Tanzania_River_Water_1.jpeg)  
 *Getting water from a stream or river*
 
@@ -79,7 +79,7 @@ For the last of our technical comparison charts we looked at the functional stat
  ![Functional Status vs Waterpoint Type](Images/Tanzania_Hand_Pump.jpg)  
  *Hand Pump*  
 
-![Functional Status vs Water Quality](Images/waterpoint_type_v2.png)
+![Functional Status vs Water Quality](Images/waterpoint_type_v2.png)  
 From this we see that the waterpoints that are generally accessed by people directly are more likely to be non-functional. The "other" category is showing a large number of data points which indicate a much higher functional rate. Unfortunately, we need more resolution on what constitutes "other" to determine what makes this category so successful.
 
 Lastly, we looked at a chart of well functionality categorized by the decade in which the well was constructed. It confirmed the obvious that newer wells are generally less likely to fail. We did not feel that it was necessary to include this chart here. However, this data set may be worth studying further if data on maintenance history can be located and merged with this.
