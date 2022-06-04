@@ -51,7 +51,7 @@ The Training_set_values.csv file contained 41 columns of information about the w
 ![Getting water from a stream or river](Images/Tanzania_River_Water_1.jpeg)  
 *Getting water from a stream or river*  
 
-For the purposes of our analysis we only retained 4 technical columns and dropped the others. This left us with the following dependant (feature) columns "source_type", "water_quality", "waterpoint_type", "construction_year". In addition, the dependant column "status_group" provided us with the functional status of each well.  
+For the purposes of our analysis we only retained 4 technical columns and dropped the others. This left us with the following dependent (feature) columns "source_type", "water_quality", "waterpoint_type", "construction_year". In addition, the dependent column "status_group" provided us with the functional status of each well.  
 
 The "status_group" column provided 3 potential outcomes. We combined 2 of these into one to convert our ternary problem into a binary problem. In a new column named "sg_new" we assigned values of "non functional" and "functional needs repair" to value 0 representing a well that needs work. A value of 1 was assigned to wells that were "functional".  
 ![Getting water from a stream or river](Images/Tanzania_Murky_Water.jpeg)  
@@ -59,7 +59,7 @@ The "status_group" column provided 3 potential outcomes. We combined 2 of these 
 
 "construction_year" was potentially interesting to see if age could be used to determine the likelihood of a well being functional or needing work. We recognized that we could not fully rely on this column alone to make a prediction without additional information regarding maintenance history and perhaps other factors. Also, this column had a significant number of rows with the year identified as 0. We dropped the rows with the value 0 from our final data set. We then used this column to create a new column called "construction_decades" to group wells by the decade in which they were dug/established.  
 
-The 2 columns called "status_group" and "construction_year" were dropped from the dataframe that we used to generate our models.  
+The 2 columns called "status_group" and "construction_year" were dropped from the dataframe that we used to generate our models since we now had two very similar/overlapping columns called  “sg_new” and “construction_decades” .  
 
 ---
 ## Data Analysis  
@@ -70,9 +70,9 @@ Our first chart plotted the functional status of wells categorized by "source_ty
 
 If we set aside the initial observation of the sheer number of non-functional wells, there is a pattern that is discernable. Boreholes and shallow wells have more functional wells than not. Wells associated with the surface such as rivers and springs tend to have more non-functioning wells.  
 
-we next looked at the functional status of wells categorized by "Water Quality".  
+We next looked at the functional status of wells categorized by "Water Quality".  
 ![Functional Status vs Water Quality](Images/water_quality_v2.png)  
-The vast majority of wells have water classified as "soft" and more of these are non-functional than functional. Given the large number of "soft" data points as compared to the rest, it is not immediately clear that the functional status is a result of the water quality or other factors such as lack of maintenance.   
+The vast majority of wells have water classified as "soft" and more of these are non-functional than functional. Given the large number of "soft" data points as compared to the rest, it is not immediately clear that the functional status is a result of the water quality or other factors such as lack of maintenance.  
 
 For the last of our technical comparison charts we looked at the functional status of wells categorized by "Waterpoint Type". Waterpoint Type refers to the mechanism by which water leaving the well is utilized such as handpump or communal standpipe.  
 
@@ -89,16 +89,14 @@ Lastly, we looked at a chart of well functionality categorized by the decade in 
 
 Since our selected features were categorical, we created dummy variables (similar to One Hot Encoding) to transform the data to numeric values. We first created a Dummy Model which will always choose the majority class.  
 
-We chose the classification metrics of precision and recall with which to evaluate our models.  
+We chose the classification metrics of precision and recall with which to evaluate our models and used confusion matrices to give us these scores.  
 
 **Recall** (False Negatives) tells us which wells our model predicted weren't working but in reality were. This would result in lost resources and time for the Tanzanian Government.  
 
 **Precision** (False Positives) tells us which wells our model predicted were working but in reality were not. This would result in the Tanzanian people potentially not having access to water and the government not knowing.  
 
-We used a confusion matrix to give us scores for precision, recall, f1-score and accuracy.  
-
-Our **dummy model** had a precision of 56%, recall of 100%, accuracy of 56% and f1-score of 72%.  
-This 56% accuracy score confirms the normalized "sg_new" value count breakdown abowhich we had calculated earlier.  
+Our **dummy model** had a precision of 56% and recall of 100%.  
+(The 56% accuracy score confirms the normalized "sg_new" value count breakdown which we had calculated earlier.)  
 
 Our **first model** was a Logistic Regression.  
 Precision = 68% and Recall = 85%.  
